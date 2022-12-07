@@ -8,9 +8,21 @@ header, nav, main, footer {
     max-width: 760px;
 }
 
-header {
+header, footer {
     background-color: navy;
     color: white;
     text-align: center;
+}
+header {
     padding: 1rem;
+}
+
+p img {
+    float: right;
+    margin: 10px;
+    border: 1px solid #000;
+}
+.yellow-text-footer {
+    color:yellow;
+    margin-block: 5px;
 }
