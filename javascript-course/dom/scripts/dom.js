@@ -25,3 +25,4 @@ function add_food(){
   
   document.getElementById("add_food").innerHTML = "<p>" = item + "</p>";
 }
+
