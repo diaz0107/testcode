@@ -4,7 +4,8 @@
     "lastName": "Diaz",
     "gender": "Male",
     "profileURL": "images/tib.png",
-    "email": "bdiaz0107@gmail.com"
+    "email": "bdiaz0107@gmail.com",
+    "position": "Director of Sales"
 },
 {
     "username": "mariamerq",
@@ -12,6 +13,7 @@
     "lastName": "Diaz",
     "gender": "Female",
     "profileURL": "images/maria.png",
-    "email": "mariamerq@gmail.com"
+    "email": "mariamerq@gmail.com",
+    "position": "Director of Marketing"
 }
 ]
