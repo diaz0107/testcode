@@ -1,93 +1,116 @@
-const locationUnitsKey = '?id=5334223&units=imperial&appid=57a90726feca2b322037cd9ee293fb56';
-const currentRequestURL = `https://api.openweathermap.org/data/2.5/weather${locationUnitsKey}`;
-const threeDayRequestURL = `https://api.openweathermap.org/data/2.5/forecast${locationUnitsKey}`;
+const APIKey = `?id=5334223&units=imperial&appid=57a90726feca2b322037cd9ee293fb56`;
+const urlTodayWeather = `https://api.openweathermap.org/data/2.5/weather${APIKey}`;
+const url3jsonForcast = `https://api.openweathermap.org/data/2.5/forecast${APIKey}`;
 
-fetch(currentRequestURL)
-  .then((response) => response.json())
-  .then((jsObject) => {
-    //console.log(jsObject);
+function init() {
+    fetchCurrentReport();
+    fetchThreeDayjsonForcastReport();
+    displayDrinks();
+}
 
-    // the current weather conditions in Carlsbad
-    let current = jsObject.weather[0].main;
-    let _c = document.getElementById('d-current');
-    _c.textContent = current;
-    
-    // current temperature(s) in Fahrenheit
-    let temp = jsObject.main.temp;
-    let _t = document.getElementById('d-temp');
-    _t.textContent = parseInt(temp);
-   
-    // the humidity in Carlsbad
-    let humidity = jsObject.main.humidity;
-    let _h = document.getElementById('d-humid');
-    _h.textContent = humidity;
-    
-    // the wind speed in Carlsbad
-    let wind = jsObject.wind.speed;
-    let _w = document.getElementById('d-wind-s');
-    _w.textContent = wind;
-});
+function displayDrinks() {
+    var dis = document.getElementById("totalDrinksDisplay");
+    var totalDrinks = JSON.parse(localStorage.getItem("totalDrinks"));
+    console.log(totalDrinks)
+    dis.innerHTML = `<h3>Total Specail Drinks Created : ${totalDrinks}</h3>`
+
+}
+
+function fetchCurrentReport() {
+    //Fetching today's weather report
+    fetch(urlTodayWeather)
+        .then((res) => res.json())
+        .then((objectReturn) => {
+
+            // the current weather conditions in Carlsbad
+            let current = objectReturn.weather[0].main + " ( " + objectReturn.weather[0].description + " )";
+            document.getElementById('d-current').textContent = current;
+
+            // current temperature(s) in Fahrenheit
+            let temp = objectReturn.main.temp;
+            document.getElementById('d-temp').textContent = parseInt(temp);
+
+            // current wind chill feels like temperature in Fahrenheit
+            // let feelTemp = objectReturn.main.feels_like;
+            // document.getElementById('d-wind-c').textContent = parseInt(feelTemp);
+
+            // the humidity in Carlsbad
+            let humidity = objectReturn.main.humidity;
+            document.getElementById('d-humid').textContent = humidity;
+
+            // the wind speed in Carlsbad
+            // let wind = objectReturn.wind.speed;
+            // document.getElementById('d-wind-s').textContent = wind;
+        });
+}
 
 
-// Carlsbad Three day forcest
-fetch(threeDayRequestURL)
-  .then((response) => response.json())
-  .then((jsObject) => {
-    let forcast = jsObject.list;
-    // holds the icon & temp objects for the three day
-    let threeDay = [];
+function fetchThreeDayjsonForcastReport() {
+    // Carlsbad Three day forcest
+    fetch(url3jsonForcast)
+        .then((res) => res.json())
+        .then((objectReturn) => {
+            let jsonForcast = objectReturn.list;
+            // frocast objects for the upcoming three days
+            let threeDay = [];
 
-    // loops through response
-    for(let i = 0; i < forcast.length; i++) {
-        // isolates the time
-        let time = parseInt(forcast[i].dt_txt.slice(10,13));
-        // if the time = 18:00 then add to the threeDay array
-        if(time == 18) {
-            // icon and temp obj
-            let w = {
-                wIcon: forcast[i].weather[0].icon,
-                wDesc: forcast[i].weather[0].description,
-                wTemp: parseInt(forcast[i].main.temp),
-                wDate: forcast[i].dt_txt.slice(0,10)
-            };
-            // pushes icon and temp object to the threeDay array
-            threeDay.push(w);
-        }
-    }
-    console.log(threeDay);
-    // loops through the threeDay array and outputs the data to the page
-    for(let i = 0; i < threeDay.length; i++) {
-        // set value for content output
-        let o_icon = `https://openweathermap.org/img/w/${threeDay[i].wIcon}.png`;
-        let o_desc = threeDay[i].wDesc;
-        let o_temp = threeDay[i].wTemp;
-        let o_date = threeDay[i].wDate;
-        // get html elements
-        let dayOutput = document.getElementById('day-output');
-        let weatherOutput = document.getElementById('weather-output');
+            console.log("jsonForcast.length" + jsonForcast.length)
+            // loops through res
+            for (let i = 0; i < 22; i++) {
+                // if the i is multiple of 7 then add to the threeDay array as json object has 8 entries each at 3 hours for one day jsonForcast
+                if (i % 7 == 0) {
+                    //prepare object
+                    let f = {
+                        fIcon: jsonForcast[i].weather[0].icon,
+                        fDesc: jsonForcast[i].weather[0].description,
+                        fTemp: parseInt(jsonForcast[i].main.temp),
+                        fDate: jsonForcast[i].dt_txt.slice(0, 10)
+                    };
+                    // pushes icon and temp object to the threeDay array
+                    console.log("f=" + f);
+                    threeDay.push(f);
+                }
+            }
+            console.log(threeDay.length);
+            // loops through the threeDay array and outputs the data to the page
+            for (let i = 0; i < 3; i++) {
+                // set value for content output
+                let o_icon = `https://openweathermap.org/img/w/${threeDay[i].fIcon}.png`;
+                let o_desc = threeDay[i].fDesc;
+                let o_temp = threeDay[i].fTemp;
+                let o_date = threeDay[i].fDate;
+                // get html elements
+                let dayOutput = document.getElementById('day-output');
+                let weatherOutput = document.getElementById('weather-output');
 
-        // create elements
-        let dayTh = document.createElement('th');
+                // create elements
+                let dayTh = document.createElement('th');
 
-        // creates weather information content
-        let weatherInfo = 
-        `<td class="forecast-info">
-            <img src="${o_icon}" alt="${o_desc}" class="w-icon">
-            <span>${o_temp} &#176;F</span>
-        </td>`;
+                // creates weather information content
+                let weatherInfo =
+                    `<td class="forecast-info">
+                        <img src="${o_icon}" alt="${o_desc}" class="w-icon">
+                        <span>${o_temp} &#176;F</span>
+                    </td>`;
 
-        // add content to elements
-        dayTh.textContent = calcDayOfWeek(o_date);
+                // add content to elements
+                dayTh.textContent = calcDayOfWeek(o_date);
 
-        // add elements to html
-        dayOutput.appendChild(dayTh);
-        weatherOutput.insertAdjacentHTML('beforeend', weatherInfo);
-    }
+                // add elements to html
+                dayOutput.appendChild(dayTh);
+                weatherOutput.insertAdjacentHTML('beforeend', weatherInfo);
+            }
 
-    // returns a long string day of week based on date
-    function calcDayOfWeek(date) {
-        let dayOfWeek = new Date(date).toLocaleString('en-us', {weekday: 'long'});
-        return dayOfWeek;
-    }
-});
+            // returns a long string day of week based on date
+            function calcDayOfWeek(date) {
+                let dayOfWeek = new Date(date).toLocaleString('en-us', { weekday: 'long' });
+                return dayOfWeek;
+            }
+        });
 
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', init);
