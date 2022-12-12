@@ -3,7 +3,7 @@
     "firstName": "Ben",
     "lastName": "Diaz",
     "gender": "Male",
-    "profileURL": "img/tib.png",
+    "profileURL": "images/tib.png",
     "email": "bdiaz0107@gmail.com"
 },
 {
@@ -11,7 +11,7 @@
     "firstName": "Maria",
     "lastName": "Diaz",
     "gender": "Female",
-    "profileURL": "img/maria.png",
+    "profileURL": "images/maria.png",
     "email": "mariamerq@gmail.com"
 }
 ]
