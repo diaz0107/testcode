@@ -33,6 +33,7 @@ header {
   height: auto;
   margin-left: -15px;
   border-radius: 50%;
+  align-items: left;
 }
 footer {
   display: grid;
