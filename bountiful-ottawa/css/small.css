@@ -85,6 +85,11 @@ nav a.at, nav a:active, span.navA {
     padding: 1em 0;
 }
 
+bountiful-logo > img {
+    padding: 1rem;
+    display: block;
+    align-items: left;
+}
 nav a:hover, span.navH {
     background-color: #FF7D00;
     color: #b47630;
