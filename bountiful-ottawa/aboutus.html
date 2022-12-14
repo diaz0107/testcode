@@ -10,9 +10,9 @@
     <meta name="author" content="Benjamin Diaz">
     <link rel="icon" href="images/favicon.ico" type="icon">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/small.css">
-    <link rel="stylesheet" href="css/large.css" media="(max-width: 950px)">
-    <link rel="stylesheet" href="css/medium.css" media="(max-width: 640px)">
+    <link rel="stylesheet" href="css/small.css" media="(min-width:0px) and (max-width:768px)">
+    <link rel="stylesheet" href="css/large.css" media="(min-width: 992px)">
+    <link rel="stylesheet" href="css/medium.css" media="(min-width: 768px) and (max-width:992px)">
 </head>
 
 <body>
@@ -36,27 +36,45 @@
             <li><a class="" href="./fresh.html">Fresh</a></li>
             <li><a class="at" href="./aboutus.html">About Us</a></li>
             <li><a class="" href="./resources.html">Resources</a></li>
-            <li><a class="" href="./contactus.html">Contact Us</a></li>
+            <!-- <li><a class="" href="./contactus.html">Contact Us</a></li> -->
         </ul>
     </nav>
-    <main>
-        <section class="color-scheme">
-            <div>
-                <h2>Color Palette</h2>
-                <img id="color-img" src="./images/color-pallet.png" alt="color pallette samples">
-                <section>
-                    <h2>Color Scheme</h2>
-                    <ol>
-                        <li><strong>#AEC3B0:</strong> heading and footer.</li>
-                        <li><strong>#01161E:</strong> "Site Plan Heading" headings</li>
-                        <li><strong>#EFF6E0:</strong> navigation hover.</li>
-                        <li><strong>#01161E:</strong> fonts color for the header, footer and navigation items.</li>
-                        <li><strong>#01161E:</strong> main fonts.</li>
-                        <li><strong>Red, Green and White:</strong> logo colors.</li>
-                    </ol>
-                </section>
+    <main class="aboutus-wrapper">
+        <h2>History and Memories</h2>
+        <div class="gallery-history">
+            <div class="img-window">
+                <picture>
+                    <img src="/images/placeholder.jpeg" data-src="/images/image1.jpeg" alt="Farm image" />
+                </picture>
             </div>
-        </section>
+            <div class="img-window">
+                <picture>
+                    <img src="/images/placeholder.jpeg" data-src="/images/image2.jpeg" alt="Cattle image" />
+                    </picture>
+            </div>
+            <div class="img-window">
+                <picture>
+                    <img src="/images/placeholder.jpeg" data-src="/images/image3.webp" alt="Celebration" />
+                </picture>
+            </div>
+            <div class="img-window">
+                <picture>
+                    <img src="/images/placeholder.jpeg" data-src="/images/image4.jpeg" alt="Windmill image" />
+                </picture>
+            </div>
+            <!-- <picture>
+                    <img src="/images/placeholder.jpeg" data-src="/images/image5.jpeg" alt="Farm image" />
+                </picture> -->
+        </div>
+        </div>
+        <div id="google-map">
+            <h4>Come visit us!! (Phone: 1234567890)</h4>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106928.88466345497!2d-117.35784183839154!3d33.121499959145524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc73453f3bee59%3A0xa4cb5592fcf65d2f!2sCarlsbad%2C%20CA%2C%20USA!5e0!3m2!1sen!2sca!4v1671018145036!5m2!1sen!2sca"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
         <br>
         <br>
     </main>

@@ -5,15 +5,6 @@ const url3jsonForcast = `https://api.openweathermap.org/data/2.5/forecast${APIKe
 function init() {
     fetchCurrentReport();
     fetchThreeDayjsonForcastReport();
-    displayDrinks();
-}
-
-function displayDrinks() {
-    var dis = document.getElementById("totalDrinksDisplay");
-    var totalDrinks = JSON.parse(localStorage.getItem("totalDrinks"));
-    console.log(totalDrinks)
-    dis.innerHTML = `<h3>Total Specail Drinks Created : ${totalDrinks}</h3>`
-
 }
 
 function fetchCurrentReport() {

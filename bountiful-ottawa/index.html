@@ -8,30 +8,35 @@
     <meta name="description" content="Bountifull Ottawa Foods landing page">
     <meta name="author" content="Benjamin Diaz">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/small.css">
-    <link rel="stylesheet" href="css/large.css" media="(max-width: 950px)">
-    <link rel="stylesheet" href="css/medium.css" media="(max-width: 640px)">
+    <link rel="stylesheet" href="css/small.css" media="(min-width:0px) and (max-width:768px)">
+    <link rel="stylesheet" href="css/large.css" media="(min-width: 992px)">
+    <link rel="stylesheet" href="css/medium.css" media="(min-width: 768px) and (max-width:992px)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="images/favicon.ico">
 </head>
 
 <body>
     <header>
-        <div id="bountiful-logo">
+        <div id="header-bountiful">
             <a href="./index.html">
                 <picture>
                     <source media="(min-width: 760px)" srcset="./images/bountiful-logo.png">
                     <img src="./images/bountiful-logo.png" alt="Bountiful Ottawa logo">
                 </picture>
-                <h1>Bountiful Ottawa Foods</h1>
-                <p>Offering signature site-made sandwiches & a selection of sweets each Saturday morning (8am to noon)
-                    at the Laguna Beach Farmers Market.
-                </p>
             </a>
+            <h1>Bountiful Ottawa Foods</h1>
+            <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+            <a href="https://www.google.com/" class="fa fa-google"></a>
+
+            <p class="subtext-title">
+                Offering signature site-made sandwiches and a selection of sweets each Saturday morning (8am to noon)
+                at the <a
+                    href="https://www.google.com/maps/dir//521+Forest+Ave,+Laguna+Beach,+CA+92651,+United+States/@33.5460873,-117.8514231,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x80dce5caff4c7867:0x98529963616368eb!2m2!1d-117.781383!2d33.546107">Laguna
+                    Beach Farmers Market</a>.
+            </p>
         </div>
-        <div class="social">
-            <a href="https://facebook.com"><img src="images/facebook.png" alt="Facebook image"></a>
-            <a href="https://twitter.com"><img src="images/twitter.png" alt="Twitter image"></a>
-        </div>
+
     </header>
     <nav>
         <ul>
@@ -39,22 +44,27 @@
             <li><a class="" href="./fresh.html">Fresh</a></li>
             <li><a class="" href="./aboutus.html">About Us</a></li>
             <li><a class="" href="./resources.html">Resources</a></li>
-            <li><a class="" href="./contactus.html">Contact Us</a></li>
+            <!-- <li><a class="" href="./contactus.html">Contact Us</a></li> -->
         </ul>
     </nav>
     <!-- <main> -->
     <main class="full-width">
         <h2 class="page-title">Bountifull Ottawa Foods</h2>
-        <section class="hero-img">
-            <picture>
-                <!-- <source media="(min-width: 650px)" srcset="./images/carlsbad-sign.webp">
-                    <source media="(min-width: 420px)" srcset="./images/carlsbad-sign.webp"> -->
-                <img class="imgAuto" src="./images/carlsbad-sign.webp" alt="Downtown Varlsbad hero image"/> 
-            </picture>
-            <a href="https://www.flickr.com/photos/jstephenconn/3162129694" target="_blank">
-                <i class="fas fa-external-link-alt"></i>
-                <p class="hidden">.</p>
-            </a>
+
+        <div class="content-wrapper">
+            <div class="city-desc">
+
+                <picture>
+                    <a href="https://www.flickr.com/photos/jstephenconn/3162129694">
+                        <img class="imgAuto" src="./images/carlsbad-sign.webp" alt="Downtown Varlsbad hero image"></a>
+                </picture>
+                <!-- <i class="fas fa-external-link-alt"></i> -->
+                <p>Bountiful Foods is a well known organization in Carlsbad, California. As we can see the wether
+                    over here is always beautiful. As a result of which is attracts more tourist and fresh
+                    vegetables and fruits are also easily grown here. Dive into out own small but meaningful
+                    organization. Welcome to Bountiful Ottawa Foods!</p>
+
+            </div>
 
             <div class="weather-summary">
                 <h3 class="ws-h3">Weather Summary</h3>
@@ -81,24 +91,25 @@
                         </tr> -->
                 </table>
             </div>
-        </section>
 
-        <section class="forecast">
-            <h2>3 Day Forecast</h2>
-            <table class="forecast-table">
-                <tr id="day-output">
-                    <td class="hidden"></td>
-                </tr>
-                <tr id="weather-output">
-                    <td class="hidden"></td>
-                </tr>
-            </table>
-        </section>
-
-        <div id="totalDrinksDisplay">
-            <!-- Total number of drinks here -->
+            <div class="weather-forcast">
+                <h2 class="forcast-title">3 Day Forecast</h2>
+                <table class="forecast-table">
+                    <tr id="day-output">
+                        <td class="hidden"></td>
+                    </tr>
+                    <tr id="weather-output">
+                        <td class="hidden"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="drinksDisplayParent">
+                <div id="totalDrinksDisplay">
+                    Want a special drink mix just for you <a href="/fresh.html">click here</a>....
+                    <!-- Total number of drinks here -->
+                </div>
+            </div>
         </div>
-        <br>
 
     </main>
     <footer>
@@ -108,6 +119,7 @@
     </footer>
     <script src="scripts/script.js"></script>
     <script src="scripts/weather.js"></script>
+    <script src="scripts/indexScripts.js"></script>
     <!-- <script src="scripts/freshFruit.js"></script> -->
 </body>
 

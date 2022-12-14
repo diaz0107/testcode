@@ -36,7 +36,7 @@ function handleFruitSelect(selected) {
             selected.innerHTML = options;
             // generateSelectFruits(objectReturn, selected);
         }).catch(err => {
-            console.log(err);
+            console.log("Fetch error :" + err);
         });
 }
 
@@ -160,10 +160,7 @@ function showResult(drinkDetail) {
     // }
     const todayDate = new Date();
     // x.removeAttribute("hidden");
-    var resultHTML = `<div class="drink-result" id="drink-result"><br><br>Your Order Details:<br>`;
-
-    // const totalDrinks = JSON.parse(localStorage.getItem("totalDrinks"));
-    resultHTML += `<br> Frist Name : ${drinkDetail.firstname}`;
+    var resultHTML = `<br> Frist Name : ${drinkDetail.firstname}`;
     resultHTML += `<br> Email : ${drinkDetail.email}`;
     resultHTML += `<br> Phone : ${drinkDetail.phone}`;
     resultHTML += `<br> 1st Fruit selected : ${drinkDetail.fruit1name}`;
@@ -183,7 +180,7 @@ function showResult(drinkDetail) {
 
     // resultHtml
 
-    resultHTML += `<br><br><br> </div>`;
+    resultHTML += `<br><br> `;
     x.innerHTML = resultHTML;
 
 }
